@@ -8,7 +8,7 @@ export default {
     onClick: { action: "clicked" },
     variant: {
       control: { type: "radio" },
-      options: ["solid", "outline", "ghost"],
+      options: ["primary", "secondary", "tertiary", "destroy"],
     },
   },
 } as Meta;
@@ -17,36 +17,71 @@ interface ButtonComponentProps {
   label: string;
   onClick: () => void;
   disabled?: boolean;
-  variant?: "solid" | "outline" | "ghost";
+  variant?: "primary" | "secondary" | "tertiary" | "destroy";
 }
 
 const Template: StoryFn<ButtonComponentProps> = (args: ButtonComponentProps) => <ButtonComponent {...args} />;
 
-export const Solid = Template.bind({});
+export const Primary = Template.bind({});
 
-Solid.args = {
-    label: "Solid Button",
-    variant:'solid'
+Primary.args = {
+  label: "Primary Button",
+  variant: "primary",
+  disabled: false
 }
 
-export const Outline = Template.bind({});
+export const PrimaryDisabled = Template.bind({});
 
-Outline.args = {
-    label: "Outline Button",
-    variant:'outline'
+PrimaryDisabled.args = {
+  label: "Primary Disabled Button",
+  variant: "primary",
+  disabled: true
 }
 
-export const Ghost = Template.bind({});
+export const Secondary = Template.bind({});
 
-Ghost.args = {
-    label: "Ghost Button",
-    variant:'ghost'
+Secondary.args = {
+  label: "Secondary Button",
+  variant: "secondary",
+  disabled: false
 }
 
-export const Disabled = Template.bind({});
+export const SecondaryDisabled = Template.bind({});
 
-Disabled.args = {
-  label: "Disabled Button",
-  variant: 'solid',
+SecondaryDisabled.args = {
+  label: "Secondary Disabled Button",
+  variant: "secondary",
+  disabled: true
+}
+
+export const Tertiary = Template.bind({});
+
+Tertiary.args = {
+  label: "Tertiary Button",
+  variant: "tertiary",
+  disabled: false
+}
+
+export const TertiaryDisabled = Template.bind({});
+
+TertiaryDisabled.args = {
+  label: "Tertiary Disabled Button",
+  variant: "tertiary",
+  disabled: true
+}
+
+export const Destroy = Template.bind({});
+
+Destroy.args = {
+  label: "Destroy Button",
+  variant: "destroy",
+  disabled: false
+}
+
+export const DestroyDisabled = Template.bind({});
+
+DestroyDisabled.args = {
+  label: "Destroy Disabled Button",
+  variant: "destroy",
   disabled: true
 }

@@ -1,5 +1,6 @@
 
 import '../src/index.scss';
+import theme from '../src/theme/theme';
 
 //👇 Configures Storybook to log the actions( onArchiveTask and onPinTask ) in the UI.
 /** @type { import('@storybook/react').Preview } */
@@ -11,6 +12,7 @@ const preview = {
         date: /Date$/,
       },
     },
+    chakra: { theme }
   },
 };
 

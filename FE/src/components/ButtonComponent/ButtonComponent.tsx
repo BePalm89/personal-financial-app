@@ -5,22 +5,24 @@ interface ButtonComponentProps {
   label: string;
   onClick: () => void;
   disabled?: boolean;
-  variant?: "solid" | "outline" | "ghost";
+  variant?: "primary" | "secondary" | "tertiary" | "destroy";
 }
 
 export const ButtonComponent: React.FC<ButtonComponentProps> = ({
   label,
   onClick,
   disabled = false,
-  variant = "solid",
+  variant = "primary",
 }) => {
   return (
     <Button
       onClick={onClick}
       isDisabled={disabled}
       variant={variant}
-      colorScheme="blue"
       size="md"
+      fontSize="h4"
+      lineHeight="base"
+      fontWeight="bold"
     >
       {label}
     </Button>
