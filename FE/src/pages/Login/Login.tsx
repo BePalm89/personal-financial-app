@@ -1,7 +1,7 @@
 import React from "react";
 import "./Login.scss";
 import { useTheme } from "@emotion/react";
-import { Link, Text } from "@chakra-ui/react";
+import { Text } from "@chakra-ui/react";
 import { InputComponent } from "../../components/InputComponent/InputComponent";
 import { useForm } from "react-hook-form";
 import { ButtonComponent } from "../../components/ButtonComponent/ButtonComponent";
@@ -86,7 +86,6 @@ export const Login: React.FC = () => {
               onClick={() => console.log("clicked")}
             ></ButtonComponent>
           </form>
-          <Link>Chakra UI</Link>
         </div>
       </div>
     </div>
