@@ -1,0 +1,27 @@
+.login-container {
+    height: 100%;
+    display: flex;
+    gap: 2rem;
+}
+
+.login-img-container {
+    flex-basis: 560px;
+    background-image: url("/img/illustration-authentication.svg");
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 12px;
+}
+
+.login-form-container {
+    height: max-content;
+    border-radius: 12px;
+    width: 560px;
+}
+
+.form-container  {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

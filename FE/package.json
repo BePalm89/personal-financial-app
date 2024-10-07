@@ -18,7 +18,9 @@
     "@storybook/builder-vite": "^8.3.5",
     "framer-motion": "^11.11.1",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.53.0",
+    "react-router-dom": "^6.26.2"
   },
   "devDependencies": {
     "@chakra-ui/storybook-addon": "^5.2.4",

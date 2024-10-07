@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "@chakra-ui/react";
+import { useTheme } from "@emotion/react";
 
 interface ButtonComponentProps {
   label: string;
@@ -14,15 +15,18 @@ export const ButtonComponent: React.FC<ButtonComponentProps> = ({
   disabled = false,
   variant = "primary",
 }) => {
+  const theme = useTheme();
   return (
     <Button
       onClick={onClick}
       isDisabled={disabled}
       variant={variant}
-      size="md"
+      size="lg"
       fontSize="h4"
       lineHeight="base"
       fontWeight="bold"
+      width="100%"
+      marginTop={theme.space[200]}
     >
       {label}
     </Button>
