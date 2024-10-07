@@ -5,6 +5,7 @@ import { Text } from "@chakra-ui/react";
 import { InputComponent } from "../../components/InputComponent/InputComponent";
 import { useForm } from "react-hook-form";
 import { ButtonComponent } from "../../components/ButtonComponent/ButtonComponent";
+import { TextComponent } from "../../components/TextComponent/TextComponent";
 
 export interface FormData {
   email: string;
@@ -31,25 +32,17 @@ export const Login: React.FC = () => {
         <div>
           <img src="/img/logo-large.svg" alt="logo img" />
         </div>
-        <div>
-          <Text
-            fontSize="h1"
+        <div className="text-container">
+          <TextComponent
+            text="Keep track of your money and save for your future"
+            variant="heading1"
             color="white"
-            fontWeight="bold"
-            lineHeight="shorter"
-          >
-            Keep track of your money and save for your future
-          </Text>
-          <Text
-            fontSize="h4"
+          />
+          <TextComponent
+            text="Personal finance app puts you in control of your spending. Track transactions, set budgets, and add to savings pots easily."
+            variant="heading4Reg"
             color="white"
-            fontWeight="regular"
-            lineHeight="base"
-            marginTop="300"
-          >
-            Personal finance app puts you in control of your spending. Track
-            transactions, set budgets, and add to savings pots easily.
-          </Text>
+          />
         </div>
       </div>
       <div className="form-container">
@@ -57,15 +50,14 @@ export const Login: React.FC = () => {
           className="login-form-container"
           style={{ backgroundColor: "white", padding: theme.space[400] }}
         >
-          <Text
-            fontSize="h1"
-            fontWeight="bold"
-            lineHeight="shorter"
-            marginBottom={theme.space[400]}
+          <TextComponent text="Login" variant="heading1" />
+          <form
+            noValidate
+            style={{
+              marginTop: theme.space[400],
+              marginBottom: theme.space[400],
+            }}
           >
-            Login
-          </Text>
-          <form noValidate>
             <InputComponent
               name="email"
               label="Email"
@@ -86,6 +78,14 @@ export const Login: React.FC = () => {
               onClick={() => console.log("clicked")}
             ></ButtonComponent>
           </form>
+          <div className="help-text">
+            <TextComponent
+              text="Need to create an account?"
+              variant="heading4Reg"
+              color="grey.500"
+              link="Sign up"
+            />
+          </div>
         </div>
       </div>
     </div>

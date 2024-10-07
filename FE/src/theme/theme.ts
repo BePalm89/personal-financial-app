@@ -1,7 +1,7 @@
 import { extendTheme } from "@chakra-ui/react";
 import Button from "./components/button";
 import Colors from "./foundations/color";
-import { fontSize, fontWeights, fonts, lineHeights } from "./foundations/typography";
+import { Headings, Link, fontSize, fontWeights, fonts, lineHeights } from "./foundations/typography";
 import spacing from "./foundations/spacing";
 import { body } from "./foundations/global";
 
@@ -14,7 +14,9 @@ const theme = extendTheme({
   space: spacing,
 
   components: {
-    Button: Button
+    Button: Button,
+    Text: Headings,
+    Link: Link
   },
 
   styles: {
