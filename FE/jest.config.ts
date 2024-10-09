@@ -7,6 +7,7 @@ const config: Config.InitialOptions = {
   testEnvironment: "jsdom",
   transform: {
     "^.+\\.tsx?$": "ts-jest",
+    "^.+\\.(scss|sass|css)$": "jest-css-modules-transform"
   },
   globals: {
     "ts-jest": {
@@ -16,6 +17,9 @@ const config: Config.InitialOptions = {
   moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
   setupFilesAfterEnv: ["<rootDir>/setupTests.ts"], // Make sure this exists
   testMatch: ["**/__tests__/**/*.+(ts|tsx|js)", "**/?(*.)+(spec|test).+(ts|tsx|js)"],
+  moduleNameMapper: {
+    '\\.(scss|sass|css)$': 'identity-obj-proxy',
+  },
 };
 
 export default config;

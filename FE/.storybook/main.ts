@@ -8,6 +8,7 @@ const config = {
      '@storybook/addon-essentials',
      '@storybook/addon-interactions',
      '@chakra-ui/storybook-addon',
+     '@storybook/addon-styling-webpack'
    ],
    core: {
     builder: '@storybook/builder-vite'
