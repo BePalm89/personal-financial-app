@@ -1,25 +1,40 @@
 import React from "react";
 import "./Login.scss";
 import { useTheme } from "@emotion/react";
-import { Text } from "@chakra-ui/react";
 import { InputComponent } from "../../components/InputComponent/InputComponent";
 import { useForm } from "react-hook-form";
 import { ButtonComponent } from "../../components/ButtonComponent/ButtonComponent";
 import { TextComponent } from "../../components/TextComponent/TextComponent";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
+interface LoginProps {
+  setLoggedIn: (value: boolean) => void;
+}
 export interface FormData {
   email: string;
   password: string;
 }
-export const Login: React.FC = () => {
+export const Login: React.FC<LoginProps> = ({ setLoggedIn }) => {
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const {
     handleSubmit,
     register,
     formState: { errors, isValid },
-    resetField,
   } = useForm<FormData>({ mode: "all" });
+
+  const onSubmit = async (data: FormData,  event: React.FormEvent<HTMLFormElement>) => {
+    event?.preventDefault();
+    try {
+      await axios.post("http://localhost:3000/api/v1/users/login", data);
+      setLoggedIn(true);
+      navigate("/home");
+    } catch (error) {
+      console.error("Error submitting form data:", error);
+    }
+  };
 
   return (
     <div className="login-container">
@@ -57,6 +72,7 @@ export const Login: React.FC = () => {
               marginTop: theme.space[400],
               marginBottom: theme.space[400],
             }}
+            onSubmit={handleSubmit(onSubmit)}
           >
             <InputComponent
               name="email"
@@ -76,7 +92,9 @@ export const Login: React.FC = () => {
             ></InputComponent>
             <ButtonComponent
               label="Login"
-              onClick={() => console.log("clicked")}
+              type="submit"
+              onClick={() => {}}
+              disabled={!isValid}
             ></ButtonComponent>
           </form>
           <div className="help-text">

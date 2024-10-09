@@ -24,7 +24,7 @@ function App() {
             ></Route>
             <Route
               path="/"
-              element={loggedId ? <Navigate to="/home" /> : <Login />}
+              element={<Login setLoggedIn={setLoggedIn}/>}
             ></Route>
           </Routes>
         </Router>
