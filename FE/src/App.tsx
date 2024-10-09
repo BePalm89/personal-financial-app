@@ -23,7 +23,7 @@ function App() {
               element={loggedId ? <Home /> : <Navigate to="/" />}
             ></Route>
             <Route
-              path="/"
+              path="/login"
               element={<Login setLoggedIn={setLoggedIn}/>}
             ></Route>
           </Routes>

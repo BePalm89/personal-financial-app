@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.scss";
 import { useTheme } from "@emotion/react";
 import { InputComponent } from "../../components/InputComponent/InputComponent";
 import { useForm } from "react-hook-form";
 import { ButtonComponent } from "../../components/ButtonComponent/ButtonComponent";
 import { TextComponent } from "../../components/TextComponent/TextComponent";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
+import { AlertComponent } from "../../components/AlertComponent/AlertComponent";
 
+interface ErrorResponse {
+  message: string;
+}
 interface LoginProps {
   setLoggedIn: (value: boolean) => void;
 }
@@ -18,6 +22,8 @@ export interface FormData {
 export const Login: React.FC<LoginProps> = ({ setLoggedIn }) => {
   const theme = useTheme();
   const navigate = useNavigate();
+  
+  const [alert, setAlert] = useState<{ status: "error" | "info" | "success" | "warning", title: string, message: string} | null>(null);
 
   const {
     handleSubmit,
@@ -28,16 +34,31 @@ export const Login: React.FC<LoginProps> = ({ setLoggedIn }) => {
   const onSubmit = async (data: FormData,  event: React.FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
     try {
-      await axios.post("http://localhost:3000/api/v1/users/login", data);
+      const response = await axios.post("http://localhost:3000/api/v1/users/login", data);
       setLoggedIn(true);
       navigate("/home");
-    } catch (error) {
-      console.error("Error submitting form data:", error);
+      console.log(response);
+    } catch (error ) {
+      const axiosError = error as AxiosError;
+      const errorResponse = axiosError.response?.data as ErrorResponse;
+
+      setAlert({
+        status: 'error',
+        title: 'Error',
+        message: errorResponse.message
+      })
     }
   };
 
+  const handleAlertClose = () => {
+    setAlert(null);
+  }
+
   return (
     <div className="login-container">
+      { alert && (
+        <AlertComponent status={alert.status} title={alert.title} message={alert.message} onClose={handleAlertClose}/>
+      )}
       <div
         className="login-img-container"
         style={{

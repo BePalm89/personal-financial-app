@@ -1,0 +1,18 @@
+.alert {
+    position: absolute !important;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    width: 40% !important;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+
+    &__info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+}
+
