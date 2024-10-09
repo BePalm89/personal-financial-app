@@ -8,11 +8,13 @@ import { TextComponent } from "../../components/TextComponent/TextComponent";
 import { withAuthForm } from "../../components/WithAuthForm/WithAuthForm";
 import { HeroBoxDesktop } from "../../components/HeroBoxDesktop/HeroBoxDesktop";
 import { FieldError, UseFormRegister } from "react-hook-form";
+import { ResponsiveComponent } from "../../components/ResponsiveComponent/ResponsiveComponent";
+import { HeroBoxMobile } from "../../components/HeroBoxMobile/HeroBoxMobile";
 
 interface LoginProps {
   handleSubmit: (event?: React.FormEvent<HTMLFormElement>) => void;
-  register:UseFormRegister<any>;
-  errors: { [key: string]: FieldError }
+  register: UseFormRegister<any>;
+  errors: { [key: string]: FieldError };
   isValid: boolean;
   setLoggedIn: (value: boolean) => void;
 }
@@ -26,7 +28,11 @@ const LoginComponent: React.FC<LoginProps> = ({
 
   return (
     <div className="login-container">
-      <HeroBoxDesktop />
+      <ResponsiveComponent>
+        {({ size }) =>
+          size === "lg" ? <HeroBoxDesktop />  : <HeroBoxMobile />
+        }
+      </ResponsiveComponent>
       <div className="form-container">
         <div
           className="login-form-container"
