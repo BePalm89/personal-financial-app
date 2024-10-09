@@ -7,6 +7,8 @@ import { HeroBoxDesktop } from "../../components/HeroBoxDesktop/HeroBoxDesktop";
 import "./Register.scss";
 import { ButtonComponent } from "../../components/ButtonComponent/ButtonComponent";
 import { FieldError, UseFormRegister } from "react-hook-form";
+import { ResponsiveComponent } from "../../components/ResponsiveComponent/ResponsiveComponent";
+import { HeroBoxMobile } from "../../components/HeroBoxMobile/HeroBoxMobile";
 interface RegisterProps {
   handleSubmit: (event?: React.FormEvent<HTMLFormElement>) => void;
   register: UseFormRegister<any>;
@@ -25,7 +27,9 @@ const RegisterComponent: React.FC<RegisterProps> = ({
 
   return (
     <div className="register-container">
-      <HeroBoxDesktop />
+      <ResponsiveComponent>
+        {({ size }) => (size === "lg" ? <HeroBoxDesktop /> : <HeroBoxMobile />)}
+      </ResponsiveComponent>
       <div className="form-container">
         <div
           className="register-form-container"
