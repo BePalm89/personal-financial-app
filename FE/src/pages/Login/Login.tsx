@@ -1,86 +1,32 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Login.scss";
 import { useTheme } from "@emotion/react";
 import { InputComponent } from "../../components/InputComponent/InputComponent";
-import { useForm } from "react-hook-form";
 import { ButtonComponent } from "../../components/ButtonComponent/ButtonComponent";
 import { TextComponent } from "../../components/TextComponent/TextComponent";
-import axios, { AxiosError } from "axios";
-import { useNavigate } from "react-router-dom";
-import { AlertComponent } from "../../components/AlertComponent/AlertComponent";
 
-interface ErrorResponse {
-  message: string;
-}
+import { withAuthForm } from "../../components/WithAuthForm/WithAuthForm";
+import { HeroBoxDesktop } from "../../components/HeroBoxDesktop/HeroBoxDesktop";
+import { FieldError, UseFormRegister } from "react-hook-form";
+
 interface LoginProps {
+  handleSubmit: (event?: React.FormEvent<HTMLFormElement>) => void;
+  register:UseFormRegister<any>;
+  errors: { [key: string]: FieldError }
+  isValid: boolean;
   setLoggedIn: (value: boolean) => void;
 }
-export interface FormData {
-  email: string;
-  password: string;
-}
-export const Login: React.FC<LoginProps> = ({ setLoggedIn }) => {
+const LoginComponent: React.FC<LoginProps> = ({
+  handleSubmit,
+  register,
+  errors,
+  isValid,
+}) => {
   const theme = useTheme();
-  const navigate = useNavigate();
-  
-  const [alert, setAlert] = useState<{ status: "error" | "info" | "success" | "warning", title: string, message: string} | null>(null);
-
-  const {
-    handleSubmit,
-    register,
-    formState: { errors, isValid },
-  } = useForm<FormData>({ mode: "all" });
-
-  const onSubmit = async (data: FormData,  event: React.FormEvent<HTMLFormElement>) => {
-    event?.preventDefault();
-    try {
-      const response = await axios.post("http://localhost:3000/api/v1/users/login", data);
-      setLoggedIn(true);
-      navigate("/home");
-      console.log(response);
-    } catch (error ) {
-      const axiosError = error as AxiosError;
-      const errorResponse = axiosError.response?.data as ErrorResponse;
-
-      setAlert({
-        status: 'error',
-        title: 'Error',
-        message: errorResponse.message
-      })
-    }
-  };
-
-  const handleAlertClose = () => {
-    setAlert(null);
-  }
 
   return (
     <div className="login-container">
-      { alert && (
-        <AlertComponent status={alert.status} title={alert.title} message={alert.message} onClose={handleAlertClose}/>
-      )}
-      <div
-        className="login-img-container"
-        style={{
-          padding: theme.space[500],
-        }}
-      >
-        <div>
-          <img src="/img/logo-large.svg" alt="logo img" />
-        </div>
-        <div className="text-container">
-          <TextComponent
-            text="Keep track of your money and save for your future"
-            variant="heading1"
-            color="white"
-          />
-          <TextComponent
-            text="Personal finance app puts you in control of your spending. Track transactions, set budgets, and add to savings pots easily."
-            variant="heading4Reg"
-            color="white"
-          />
-        </div>
-      </div>
+      <HeroBoxDesktop />
       <div className="form-container">
         <div
           className="login-form-container"
@@ -93,7 +39,7 @@ export const Login: React.FC<LoginProps> = ({ setLoggedIn }) => {
               marginTop: theme.space[400],
               marginBottom: theme.space[400],
             }}
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit}
           >
             <InputComponent
               name="email"
@@ -124,6 +70,7 @@ export const Login: React.FC<LoginProps> = ({ setLoggedIn }) => {
               variant="heading4Reg"
               color="grey.500"
               link="Sign up"
+              linkUrl="/register"
             />
           </div>
         </div>
@@ -131,3 +78,7 @@ export const Login: React.FC<LoginProps> = ({ setLoggedIn }) => {
     </div>
   );
 };
+const Login = withAuthForm(LoginComponent, {
+  onSubmitUrl: "http://localhost:3000/api/v1/users/login",
+});
+export default Login;

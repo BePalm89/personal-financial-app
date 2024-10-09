@@ -1,5 +1,5 @@
-import { Link, Text } from "@chakra-ui/react";
-
+import { Link as ChakraLink, Text } from "@chakra-ui/react";
+import { Link as ReactRouterLink } from 'react-router-dom'
 interface TextComponentProps {
   text: string;
   variant:
@@ -11,6 +11,7 @@ interface TextComponentProps {
     | "heading5Reg"
     | "heading5Bold";
   link?: string;
+  linkUrl?: string;
   color?: string;
 }
 export const TextComponent: React.FC<TextComponentProps> = ({
@@ -18,10 +19,11 @@ export const TextComponent: React.FC<TextComponentProps> = ({
   variant,
   color,
   link,
+  linkUrl
 }) => {
   return (
     <Text variant={variant} color={color}>
-      {text} {link && <Link>{link}</Link>}
+      {text} {link && <ChakraLink as={ReactRouterLink} to={linkUrl}>{link}</ChakraLink>}
     </Text>
   );
 };

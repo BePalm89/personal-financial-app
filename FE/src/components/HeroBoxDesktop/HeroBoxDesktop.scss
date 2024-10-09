@@ -1,0 +1,14 @@
+.login-img-container {
+    flex-basis: 560px;
+    background-image: url("/img/illustration-authentication.svg");
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 12px;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}

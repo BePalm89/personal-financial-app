@@ -9,7 +9,8 @@ import {
   Routes,
 } from "react-router-dom";
 import { Home } from "./pages/Home/Home";
-import { Login } from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
+import Login from "./pages/Login/Login";
 function App() {
   const [loggedId, setLoggedIn] = useState<boolean>(false);
 
@@ -24,7 +25,11 @@ function App() {
             ></Route>
             <Route
               path="/login"
-              element={<Login setLoggedIn={setLoggedIn}/>}
+              element={<Login setLoggedIn={setLoggedIn} />}
+            ></Route>
+            <Route
+              path="/register"
+              element={<Register setLoggedIn={setLoggedIn} />}
             ></Route>
           </Routes>
         </Router>

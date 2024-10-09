@@ -138,7 +138,7 @@ export const InputComponent: React.FC<InputComponentProps> = ({
           </InputGroup>
         )}
 
-        {helperText && <FormHelperText>{helperText}</FormHelperText>}
+        {helperText && <FormHelperText textAlign="right">{helperText}</FormHelperText>}
         {errors && <FormErrorMessage>{errors?.message}</FormErrorMessage>}
       </FormControl>
     </Box>
