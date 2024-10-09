@@ -6,6 +6,7 @@ import {
   CloseButton,
 } from "@chakra-ui/react";
 import "./AlertComponent.scss";
+import { useEffect } from "react";
 
 interface AlertComponentProps {
   status: "error" | "info" | "success" | "warning";
@@ -19,6 +20,16 @@ export const AlertComponent: React.FC<AlertComponentProps> = ({
   message,
   onClose,
 }) => {
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      onClose();
+    }, 5000);
+  
+    return () => clearTimeout(timer);
+  }, [onClose]);
+
+
   return (
     <Alert status={status} className="alert">
       <div className="alert__info" >
