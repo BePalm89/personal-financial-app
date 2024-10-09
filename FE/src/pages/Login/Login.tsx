@@ -64,6 +64,7 @@ export const Login: React.FC = () => {
               type="email"
               register={register}
               isRequired={true}
+              errors={errors.email}
             ></InputComponent>
             <InputComponent
               name="password"
@@ -71,7 +72,7 @@ export const Login: React.FC = () => {
               type="password"
               register={register}
               isRequired={true}
-              icon="eye"
+              errors={errors.password}
             ></InputComponent>
             <ButtonComponent
               label="Login"
