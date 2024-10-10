@@ -10,8 +10,12 @@ import { SidebarItem } from "../SidebarItem/SidebarItem";
 import { ButtonComponent } from "../ButtonComponent/ButtonComponent";
 import { MinimizeMenuIcon } from "../SidebarItem/custonIcons";
 
-export const SidebarComponent: React.FC = () => {
-  const [isMinimize, setIsMinimize] = useState<boolean>(false);
+interface SidebarComponentProps {
+  isMinimize: boolean;
+  setIsMinimize: (isMinimize: boolean) => void;
+}
+
+export const SidebarComponent: React.FC<SidebarComponentProps> = ({isMinimize, setIsMinimize}) => {
 
   const onClose = () => {
     setIsMinimize(!isMinimize);

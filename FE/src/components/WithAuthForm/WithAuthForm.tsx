@@ -21,13 +21,21 @@ interface AuthFormConfig {
 interface WrappedComponentProps {
   handleSubmit: (event?: React.FormEvent<HTMLFormElement>) => void;
   register: UseFormRegister<any>;
-  errors: { [key: string]: FieldError }
+  errors: { [key: string]: FieldError };
   isValid: boolean;
   setLoggedIn: (value: boolean) => void;
 }
 
-export const withAuthForm = (WrappedComponent: React.ComponentType<WrappedComponentProps>, config: AuthFormConfig) => {
-  return (props: Omit<WrappedComponentProps, 'handleSubmit' | 'register' | 'errors' | 'isValid'>) => {
+export const withAuthForm = (
+  WrappedComponent: React.ComponentType<WrappedComponentProps>,
+  config: AuthFormConfig
+) => {
+  return (
+    props: Omit<
+      WrappedComponentProps,
+      "handleSubmit" | "register" | "errors" | "isValid"
+    >
+  ) => {
     const navigate = useNavigate();
     const [alert, setAlert] = useState<{
       status: "error" | "info" | "success" | "warning";
@@ -43,7 +51,8 @@ export const withAuthForm = (WrappedComponent: React.ComponentType<WrappedCompon
 
     const onSubmit = async (data: FormData) => {
       try {
-        await axios.post(config.onSubmitUrl, data);        navigate("/home");
+        await axios.post(config.onSubmitUrl, data);
+        navigate("/overview");
         props.setLoggedIn(true);
       } catch (error) {
         const axiosError = error as AxiosError;
