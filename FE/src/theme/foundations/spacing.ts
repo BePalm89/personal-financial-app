@@ -1,4 +1,4 @@
-const spacing = {
+const space = {
   500: "2.5rem",
   400: "2rem",
   300: "1.5rem",
@@ -9,4 +9,4 @@ const spacing = {
   50: "0.25rem",
 };
 
-export default spacing;
+export default space;

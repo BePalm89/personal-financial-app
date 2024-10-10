@@ -1,5 +1,3 @@
-import { textDecoration } from "@chakra-ui/react";
-
 export const fonts = {
   body: "'Public Sans', sans-serif",
   heading: "'Public Sans', sans-serif",
@@ -28,45 +26,82 @@ export const Headings = {
     heading1: {
       fontSize: fontSize.h1,
       lineHeight: lineHeights.shorter,
-      fontWeight: fontWeights.bold
+      fontWeight: fontWeights.bold,
     },
     heading2: {
       fontSize: fontSize.h2,
       lineHeight: lineHeights.shorter,
-      fontWeight: fontWeights.bold
+      fontWeight: fontWeights.bold,
     },
     heading3: {
       fontSize: fontSize.h3,
       lineHeight: lineHeights.base,
-      fontWeight: fontWeights.bold
+      fontWeight: fontWeights.bold,
     },
     heading4Reg: {
       fontSize: fontSize.h4,
       lineHeight: lineHeights.base,
-      fontWeight: fontWeights.regular
+      fontWeight: fontWeights.regular,
     },
     heading4Bold: {
       fontSize: fontSize.h4,
       lineHeight: lineHeights.base,
-      fontWeight: fontWeights.bold
+      fontWeight: fontWeights.bold,
     },
     heading5Reg: {
       fontSize: fontSize.h5,
       lineHeight: lineHeights.base,
-      fontWeight: fontWeights.regular
+      fontWeight: fontWeights.regular,
     },
     heading5Bold: {
       fontSize: fontSize.h5,
       lineHeight: lineHeights.base,
-      fontWeight: fontWeights.bold
+      fontWeight: fontWeights.bold,
     },
   },
 };
 
 export const Link = {
   baseStyle: {
-    color: 'grey.900',
+    color: "grey.900",
     fontWeight: fontWeights.bold,
-    textDecoration: 'underline'
-  }
-}
+    textDecoration: "underline",
+  },
+  variants: {
+    menuItem: {
+      padding: "16px",
+      paddingLeft: "32px",
+      display: "flex",
+      justifyContent: "flex-start",
+      alignItems: "center",
+      gap: '16px',
+      textDecoration: "none",
+      color: "grey.300",
+      fontSize: "h3",
+      textTransform: "capitalize",
+      _hover: {
+        color: "white",
+        border: "none",
+        textDecoration: "none",
+        ".chakra-icon": {
+          color: "white",
+        },
+      },
+      _focus: {
+        bg: "white",
+        color: "grey.900",
+        border: "none",
+        borderLeftWidth: "4px",
+        borderLeftStyle: "solid",
+        borderLeftColor: "secondary.green",
+        boxShadow: "none",
+        marginRight: "30px",
+        borderTopRightRadius: '12px',
+        borderBottomRightRadius: '12px',
+        ".chakra-icon": {
+          color: "grey.900",
+        },
+      },
+    },
+  },
+};

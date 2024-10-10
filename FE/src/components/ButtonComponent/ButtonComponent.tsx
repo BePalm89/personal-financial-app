@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "@chakra-ui/react";
+import { Button, IconProps } from "@chakra-ui/react";
 import { useTheme } from "@emotion/react";
 
 interface ButtonComponentProps {
@@ -7,7 +7,9 @@ interface ButtonComponentProps {
   type: 'button' | 'submit' | 'reset',
   onClick: () => void;
   disabled?: boolean;
-  variant?: "primary" | "secondary" | "tertiary" | "destroy";
+  variant?: "primary" | "secondary" | "tertiary" | "destroy" | "ghost";
+  leftIcon?: React.ReactElement<IconProps>;
+  rightIcon?: React.ReactElement<IconProps>;
 }
 
 export const ButtonComponent: React.FC<ButtonComponentProps> = ({
@@ -16,7 +18,8 @@ export const ButtonComponent: React.FC<ButtonComponentProps> = ({
   onClick,
   disabled = false,
   variant = "primary",
-
+  leftIcon,
+  rightIcon
 }) => {
   const theme = useTheme();
   return (
@@ -31,6 +34,8 @@ export const ButtonComponent: React.FC<ButtonComponentProps> = ({
       width="100%"
       marginTop={theme.space[200]}
       type={type}
+      leftIcon={leftIcon}
+      rightIcon={rightIcon}
     >
       {label}
     </Button>

@@ -71,6 +71,24 @@ const Button = {
         },
       },
     },
+    ghost: {
+      bg: "transparent",
+      color: "grey.300",
+      display: "flex",
+      justifyContent: "flex-start",
+      padding: "0",
+      paddingLeft: "8px",
+      _hover: {
+        bg: "transparent",
+        color: "white",
+        '.chakra-icon': {
+          color: "white",
+        }
+      },
+      _focus: {
+        bg: "transparent"
+      }
+    },
   },
 };
 

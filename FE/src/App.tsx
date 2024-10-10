@@ -11,6 +11,7 @@ import {
 import { Home } from "./pages/Home/Home";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
+import { SidebarComponent } from "./components/SidebarComponent/SidebarComponent";
 function App() {
   const [loggedId, setLoggedIn] = useState<boolean>(false);
 
@@ -18,10 +19,11 @@ function App() {
     <ChakraProvider theme={theme}>
       <Box p={250} className="container">
         <Router>
+          {loggedId && <SidebarComponent />}
           <Routes>
             <Route
               path="/home"
-              element={loggedId ? <Home /> : <Navigate to="/" />}
+              element={loggedId ? <Home /> : <Navigate to="/login" />}
             ></Route>
             <Route
               path="/login"
