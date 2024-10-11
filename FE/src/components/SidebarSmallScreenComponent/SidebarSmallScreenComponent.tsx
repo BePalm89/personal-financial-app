@@ -1,9 +1,10 @@
 import { Box } from "@chakra-ui/react";
 import { SidebarItem } from "../SidebarItem/SidebarItem";
 import { menuItems } from "../../data/sidebarLink";
+import { ScreenSize } from "../../hooks/useScreenSize";
 
 interface SidebarSmallScreenComponent {
-  size: 'sm' | 'md' | 'lg';
+  size: ScreenSize;
 }
 
 export const SidebarSmallScreenComponent: React.FC<SidebarSmallScreenComponent> = ({ size }) => {

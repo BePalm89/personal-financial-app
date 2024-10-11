@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.scss";
 import theme from "./theme/theme";
 import { Box, ChakraProvider } from "@chakra-ui/react";
@@ -14,9 +14,19 @@ import Login from "./pages/Login/Login";
 import { SidebarComponent } from "./components/SidebarComponent/SidebarComponent";
 import { ResponsiveComponent } from "./components/ResponsiveComponent/ResponsiveComponent";
 import { SidebarSmallScreenComponent } from "./components/SidebarSmallScreenComponent/SidebarSmallScreenComponent";
+import { ScreenSize } from "./hooks/useScreenSize";
 function App() {
   const [loggedId, setLoggedIn] = useState<boolean>(false);
   const [isMinimized, setIsMinimized] = useState<boolean>(false);
+  const [screenSize, setScreenSize] = useState<ScreenSize>("lg");
+
+  const prevScreenSize = useRef<ScreenSize>(screenSize);
+
+  useEffect(() => {
+    if (prevScreenSize.current !== screenSize) {
+      prevScreenSize.current = screenSize; // Update the ref to the new size
+    }
+  }, [screenSize]);
 
   return (
     <ChakraProvider theme={theme}>
@@ -24,22 +34,31 @@ function App() {
         <Router>
           {loggedId && (
             <ResponsiveComponent>
-              {({ size }) =>
-                size === "lg" ? (
+              {({ size }) => {
+                if(size !== screenSize) {
+                  setScreenSize(size);
+                }
+                return size === "lg" ? (
                   <SidebarComponent
                     isMinimize={isMinimized}
                     setIsMinimize={setIsMinimized}
                   />
                 ) : (
-
-                    <SidebarSmallScreenComponent size={size} />
-
-                )
-              }
+                  <SidebarSmallScreenComponent size={size} />
+                );
+              }}
             </ResponsiveComponent>
           )}
           <Box
-            ml={loggedId ? (isMinimized ? "80px" : "320px") : "0px"}
+            ml={
+              loggedId
+                ? screenSize === "lg"
+                  ? isMinimized
+                    ? "80px"
+                    : "320px"
+                  : "0px"
+                : "0px"
+            }
             height="100%"
           >
             <Routes>

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 
-export type ScreenSize = "sm" | "md" | "lg" | "undefined";
+export type ScreenSize = "sm" | "md" | "lg";
 
 export const useScreenSize = (): ScreenSize => {
-  const [screenSize, setScreeSize] = useState<ScreenSize>("undefined");
+  const [screenSize, setScreeSize] = useState<ScreenSize>("lg");
 
   useEffect(() => {
     function getScreenSize(): ScreenSize {
