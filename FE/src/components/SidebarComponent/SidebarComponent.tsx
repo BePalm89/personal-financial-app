@@ -9,28 +9,29 @@ import React, { useState } from "react";
 import { SidebarItem } from "../SidebarItem/SidebarItem";
 import { ButtonComponent } from "../ButtonComponent/ButtonComponent";
 import { MinimizeMenuIcon } from "../SidebarItem/custonIcons";
+import { menuItems } from "../../data/sidebarLink";
 
 interface SidebarComponentProps {
   isMinimize: boolean;
   setIsMinimize: (isMinimize: boolean) => void;
 }
 
-export const SidebarComponent: React.FC<SidebarComponentProps> = ({isMinimize, setIsMinimize}) => {
-
+export const SidebarComponent: React.FC<SidebarComponentProps> = ({
+  isMinimize,
+  setIsMinimize,
+}) => {
   const onClose = () => {
     setIsMinimize(!isMinimize);
   };
 
-  const menuItems: { icon: string; label: string; url: string }[] = [
-    { icon: "overview", label: "overview", url: "/overview" },
-    { icon: "transactions", label: "transactions", url: "/transactions" },
-    { icon: "budgets", label: "budgets", url: "/budgets" },
-    { icon: "pots", label: "pots", url: "/pots" },
-    { icon: "bills", label: "bills", url: "/bills" },
-  ];
 
   return (
-    <Drawer isOpen={true} placement="left" onClose={onClose}>
+    <Drawer
+      isOpen={true}
+      placement="left"
+      onClose={onClose}
+      closeOnOverlayClick={false}
+    >
       <DrawerContent
         bg="grey.900"
         borderTopRightRadius="16px"

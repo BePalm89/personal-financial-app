@@ -1,5 +1,5 @@
 import { Link as ReactRouterLink } from "react-router-dom";
-import { Link as ChakraLink } from "@chakra-ui/react";
+import { Link as ChakraLink, ResponsiveValue } from "@chakra-ui/react";
 import "./SidebarItem.scss";
 import {
   BudgetsIcon,
@@ -13,12 +13,22 @@ interface SidebarItemProps {
   icon: string;
   label: string;
   url: string;
+  direction?: FlexDirectionType;
+  variant?: 'menuItem' | 'menuItemSmall'
+  width?: string;
 }
+
+type FlexDirectionType = ResponsiveValue<
+  "row" | "column" | "row-reverse" | "column-reverse"
+>;
 
 export const SidebarItem: React.FC<SidebarItemProps> = ({
   icon,
   label,
   url,
+  direction = "row",
+  variant = 'menuItem',
+  width
 }) => {
   const renderIcon = () => {
     switch (icon) {
@@ -35,12 +45,17 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({
     }
   };
   return (
-    <>
-      <ChakraLink as={ReactRouterLink} to={url} variant="menuItem">
-        {renderIcon()}
-        {label}
-      </ChakraLink>
-
-    </>
+    <ChakraLink
+      as={ReactRouterLink}
+      to={url}
+      variant={variant}
+      display="flex"
+      flexDirection={direction}
+      gap={direction === "column" ? "8px" : "16px"}
+      width={width}
+    >
+      {renderIcon()}
+      {label}
+    </ChakraLink>
   );
 };
