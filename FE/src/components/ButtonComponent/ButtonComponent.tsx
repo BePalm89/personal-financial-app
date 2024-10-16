@@ -4,7 +4,7 @@ import { useTheme } from "@emotion/react";
 
 interface ButtonComponentProps {
   label: string;
-  type: 'button' | 'submit' | 'reset',
+  type: "button" | "submit" | "reset";
   onClick: () => void;
   disabled?: boolean;
   variant?: "primary" | "secondary" | "tertiary" | "destroy" | "ghost";
@@ -14,14 +14,13 @@ interface ButtonComponentProps {
 
 export const ButtonComponent: React.FC<ButtonComponentProps> = ({
   label,
-  type = 'button',
+  type = "button",
   onClick,
   disabled = false,
   variant = "primary",
   leftIcon,
-  rightIcon
+  rightIcon,
 }) => {
-  const theme = useTheme();
   return (
     <Button
       onClick={onClick}
@@ -32,7 +31,7 @@ export const ButtonComponent: React.FC<ButtonComponentProps> = ({
       lineHeight="base"
       fontWeight="bold"
       width="100%"
-      marginTop={theme.space[200]}
+      marginTop={200}
       type={type}
       leftIcon={leftIcon}
       rightIcon={rightIcon}

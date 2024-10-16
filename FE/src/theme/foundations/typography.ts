@@ -94,8 +94,8 @@ export const Link = {
         borderLeftColor: "secondary.green",
         boxShadow: "none",
         marginRight: "30px",
-        borderTopRightRadius: '12px',
-        borderBottomRightRadius: '12px',
+        borderTopRightRadius: "12px",
+        borderBottomRightRadius: "12px",
         ".chakra-icon": {
           color: "secondary.green",
         },
@@ -126,8 +126,8 @@ export const Link = {
         borderBottomStyle: "solid",
         borderBottomColor: "secondary.green",
         boxShadow: "none",
-        borderTopRightRadius: '12px',
-        borderTopLeftRadius: '12px',
+        borderTopRightRadius: "12px",
+        borderTopLeftRadius: "12px",
         ".chakra-icon": {
           color: "secondary.green",
         },

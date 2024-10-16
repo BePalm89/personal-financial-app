@@ -7,14 +7,14 @@ import {
   PotsIcon,
   RecurringBillsIcon,
   TransactionIcon,
-} from "./custonIcons";
+} from "../../assets/icons/custonIcons";
 
 interface SidebarItemProps {
   icon: string;
   label: string;
   url: string;
   direction?: FlexDirectionType;
-  variant?: 'menuItem' | 'menuItemSmall'
+  variant?: "menuItem" | "menuItemSmall";
   width?: string;
 }
 
@@ -27,8 +27,8 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({
   label,
   url,
   direction = "row",
-  variant = 'menuItem',
-  width
+  variant = "menuItem",
+  width,
 }) => {
   const renderIcon = () => {
     switch (icon) {

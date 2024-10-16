@@ -8,7 +8,7 @@ import {
 import React, { useState } from "react";
 import { SidebarItem } from "../SidebarItem/SidebarItem";
 import { ButtonComponent } from "../ButtonComponent/ButtonComponent";
-import { MinimizeMenuIcon } from "../SidebarItem/custonIcons";
+import { MinimizeMenuIcon } from "../../assets/icons/custonIcons";
 import { menuItems } from "../../data/sidebarLink";
 
 interface SidebarComponentProps {
@@ -23,7 +23,6 @@ export const SidebarComponent: React.FC<SidebarComponentProps> = ({
   const onClose = () => {
     setIsMinimize(!isMinimize);
   };
-
 
   return (
     <Drawer

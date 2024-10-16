@@ -29,9 +29,7 @@ const LoginComponent: React.FC<LoginProps> = ({
   return (
     <div className="login-container">
       <ResponsiveComponent>
-        {({ size }) =>
-          size === "lg" ? <HeroBoxDesktop />  : <HeroBoxMobile />
-        }
+        {({ size }) => (size === "lg" ? <HeroBoxDesktop /> : <HeroBoxMobile />)}
       </ResponsiveComponent>
       <div className="form-container">
         <div

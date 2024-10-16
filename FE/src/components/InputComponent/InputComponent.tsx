@@ -12,7 +12,6 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { FieldError, UseFormRegister } from "react-hook-form";
-import { useTheme } from "@emotion/react";
 interface InputComponentProps {
   name: string;
   label: string;
@@ -41,10 +40,8 @@ export const InputComponent: React.FC<InputComponentProps> = ({
   prefix,
   colorTag,
 }) => {
-  const theme = useTheme();
-
-  const [show, setShow] = React.useState(false)
-  const handleClick = () => setShow(!show)
+  const [show, setShow] = React.useState(false);
+  const handleClick = () => setShow(!show);
 
   const requiredErrorMessage = "This field is required";
 
@@ -87,7 +84,7 @@ export const InputComponent: React.FC<InputComponentProps> = ({
   };
 
   return (
-    <Box marginBottom={theme.space[200]}>
+    <Box marginBottom={200}>
       <FormControl id={name} isRequired={isRequired} isInvalid={!!errors}>
         <FormLabel>{label}</FormLabel>
         {type === "password" ? (
@@ -97,8 +94,8 @@ export const InputComponent: React.FC<InputComponentProps> = ({
               placeholder={placeholder}
               {...register(name, getValidationRules())}
             />
-          <InputRightElement>
-          <Button
+            <InputRightElement>
+              <Button
                 h="1.75rem"
                 size="sm"
                 onClick={handleClick}
@@ -138,7 +135,9 @@ export const InputComponent: React.FC<InputComponentProps> = ({
           </InputGroup>
         )}
 
-        {helperText && <FormHelperText textAlign="right">{helperText}</FormHelperText>}
+        {helperText && (
+          <FormHelperText textAlign="right">{helperText}</FormHelperText>
+        )}
         {errors && <FormErrorMessage>{errors?.message}</FormErrorMessage>}
       </FormControl>
     </Box>

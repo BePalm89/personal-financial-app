@@ -1,11 +1,24 @@
 import { extendTheme } from "@chakra-ui/react";
 import Button from "./components/button";
 import Colors from "./foundations/color";
-import { Headings, Link, fontSize, fontWeights, fonts, lineHeights } from "./foundations/typography";
+import {
+  Headings,
+  Link,
+  fontSize,
+  fontWeights,
+  fonts,
+  lineHeights,
+} from "./foundations/typography";
 import space from "./foundations/spacing";
 import { body } from "./foundations/global";
 
+const breakpoints = {
+  sm: "600px",
+  md: "1024px",
+};
+
 const theme = extendTheme({
+  breakpoints,
   fonts: fonts,
   fontSizes: fontSize,
   fontWeights: fontWeights,
@@ -21,9 +34,9 @@ const theme = extendTheme({
 
   styles: {
     global: {
-      body : body
-    }
-  }
+      body: body,
+    },
+  },
 });
 
 export default theme;
