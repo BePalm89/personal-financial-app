@@ -1,16 +1,6 @@
 import React from "react";
-import { Button, IconProps } from "@chakra-ui/react";
-import { useTheme } from "@emotion/react";
-
-interface ButtonComponentProps {
-  label: string;
-  type: "button" | "submit" | "reset";
-  onClick: () => void;
-  disabled?: boolean;
-  variant?: "primary" | "secondary" | "tertiary" | "destroy" | "ghost";
-  leftIcon?: React.ReactElement<IconProps>;
-  rightIcon?: React.ReactElement<IconProps>;
-}
+import { Button } from "@chakra-ui/react";
+import { ButtonComponentProps } from "../../types";
 
 export const ButtonComponent: React.FC<ButtonComponentProps> = ({
   label,
@@ -20,6 +10,8 @@ export const ButtonComponent: React.FC<ButtonComponentProps> = ({
   variant = "primary",
   leftIcon,
   rightIcon,
+  width = "auto",
+  marginTop = 0,
 }) => {
   return (
     <Button
@@ -30,8 +22,8 @@ export const ButtonComponent: React.FC<ButtonComponentProps> = ({
       fontSize="h4"
       lineHeight="base"
       fontWeight="bold"
-      width="100%"
-      marginTop={200}
+      width={width}
+      marginTop={marginTop}
       type={type}
       leftIcon={leftIcon}
       rightIcon={rightIcon}

@@ -4,8 +4,9 @@ import {
   DrawerHeader,
   DrawerBody,
   DrawerFooter,
+  DrawerOverlay,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React from "react";
 import { SidebarItem } from "../SidebarItem/SidebarItem";
 import { ButtonComponent } from "../ButtonComponent/ButtonComponent";
 import { MinimizeMenuIcon } from "../../assets/icons/custonIcons";
@@ -30,7 +31,10 @@ export const SidebarComponent: React.FC<SidebarComponentProps> = ({
       placement="left"
       onClose={onClose}
       closeOnOverlayClick={false}
+      blockScrollOnMount={true}
+      variant="alwaysOpen"
     >
+      <DrawerOverlay visibility="hidden" />
       <DrawerContent
         bg="grey.900"
         borderTopRightRadius="16px"
@@ -63,6 +67,8 @@ export const SidebarComponent: React.FC<SidebarComponentProps> = ({
             variant="ghost"
             label={isMinimize ? "" : "Minimize Menu"}
             onClick={onClose}
+            width="100%"
+            marginTop={200}
             leftIcon={
               <MinimizeMenuIcon
                 color="grey.300"

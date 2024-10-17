@@ -40,6 +40,7 @@ const Button = {
     tertiary: {
       bg: "transparent",
       color: "grey.500",
+      cursor: "pointer",
       _hover: {
         bg: "transparent",
         color: "grey.900",
@@ -81,13 +82,13 @@ const Button = {
       _hover: {
         bg: "transparent",
         color: "white",
-        '.chakra-icon': {
+        ".chakra-icon": {
           color: "white",
-        }
+        },
       },
       _focus: {
-        bg: "transparent"
-      }
+        bg: "transparent",
+      },
     },
   },
 };

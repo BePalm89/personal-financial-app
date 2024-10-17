@@ -1,9 +1,11 @@
-import { Box, Flex } from "@chakra-ui/react";
-import React from "react";
-import { TextComponent } from "../TextComponent/TextComponent";
-import { NumericFormat } from "react-number-format";
 import "./AmountBox.scss";
+
+import React from "react";
+import { Box, Flex } from "@chakra-ui/react";
+
+import { TextComponent } from "../TextComponent/TextComponent";
 import { RecurringBillsIcon } from "../../assets/icons/custonIcons";
+import { NumberDisplayComponent } from "../NumberDisplayComponent/NumberDisplayComponent";
 
 interface AmountBoxProps {
   label: string;
@@ -39,14 +41,14 @@ export const AmountBox: React.FC<AmountBoxProps> = ({
       <Flex direction="column" gap={400}>
         {icon && renderIcon()}
         <TextComponent text={label} variant="heading4Reg" />
-        <NumericFormat
-          value={amount}
+        <NumberDisplayComponent
+          amount={amount}
           prefix="$"
           displayType="text"
           decimalScale={2}
           fixedDecimalScale={true}
           thousandSeparator={true}
-          className="amount"
+          style="amount"
         />
       </Flex>
     </Box>

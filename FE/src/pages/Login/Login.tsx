@@ -66,6 +66,8 @@ const LoginComponent: React.FC<LoginProps> = ({
               type="submit"
               onClick={() => {}}
               disabled={!isValid}
+              width="100%"
+              marginTop={200}
             ></ButtonComponent>
           </form>
           <div className="help-text">

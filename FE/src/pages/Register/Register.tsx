@@ -74,6 +74,8 @@ const RegisterComponent: React.FC<RegisterProps> = ({
               label="Create Account"
               onClick={() => {}}
               disabled={!isValid}
+              width="100%"
+              marginTop={200}
             />
           </form>
           <div className="help-text">

@@ -30,6 +30,19 @@ const theme = extendTheme({
     Button: Button,
     Text: Headings,
     Link: Link,
+    Drawer: {
+      variants: {
+        alwaysOpen: {
+          parts: ["dialog, dialogContainer"],
+          dialog: {
+            pointerEvents: "auto",
+          },
+          dialogContainer: {
+            pointerEvents: "none",
+          },
+        },
+      },
+    },
   },
 
   styles: {
