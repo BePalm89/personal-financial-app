@@ -3,7 +3,7 @@ import { AmountBox } from "../../components/AmountBox/AmountBox";
 import { TextComponent } from "../../components/TextComponent/TextComponent";
 import "./Overview.scss";
 import { BoxComponent } from "../../components/BoxComponent/BoxComponent";
-import { ArrowRightIcon, PotsIcon } from "../../assets/icons/custonIcons";
+import { ArrowRightIcon, PotsIcon } from "../../assets/icons/customIcons";
 import { NumberDisplayComponent } from "../../components/NumberDisplayComponent/NumberDisplayComponent";
 import { ItemWithAmountComponent } from "../../components/ItemWithAmountComponent/ItemWithAmountComponent";
 

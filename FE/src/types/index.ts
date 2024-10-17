@@ -51,3 +51,12 @@ export interface NumberDisplayProps {
   thousandSeparator?: boolean;
   style?: string;
 }
+
+export interface FinancialToolsProps {
+  isOpen: boolean;
+  onClose: () => void;
+  title: TextComponentProps;
+  description: TextComponentProps;
+  children: React.ReactNode;
+  button: ButtonComponentProps;
+}

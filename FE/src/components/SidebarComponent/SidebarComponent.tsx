@@ -9,7 +9,7 @@ import {
 import React from "react";
 import { SidebarItem } from "../SidebarItem/SidebarItem";
 import { ButtonComponent } from "../ButtonComponent/ButtonComponent";
-import { MinimizeMenuIcon } from "../../assets/icons/custonIcons";
+import { MinimizeMenuIcon } from "../../assets/icons/customIcons";
 import { menuItems } from "../../data/sidebarLink";
 
 interface SidebarComponentProps {

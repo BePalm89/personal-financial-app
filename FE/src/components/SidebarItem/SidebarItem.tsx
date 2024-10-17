@@ -7,7 +7,7 @@ import {
   PotsIcon,
   RecurringBillsIcon,
   TransactionIcon,
-} from "../../assets/icons/custonIcons";
+} from "../../assets/icons/customIcons";
 
 interface SidebarItemProps {
   icon: string;

@@ -15,6 +15,7 @@ import { SidebarComponent } from "./components/SidebarComponent/SidebarComponent
 import { ResponsiveComponent } from "./components/ResponsiveComponent/ResponsiveComponent";
 import { SidebarSmallScreenComponent } from "./components/SidebarSmallScreenComponent/SidebarSmallScreenComponent";
 import { ScreenSize } from "./hooks/useScreenSize";
+import { Transaction } from "./pages/Transactions/Transaction";
 function App() {
   const [loggedId, setLoggedIn] = useState<boolean>(false);
   const [isMinimized, setIsMinimized] = useState<boolean>(false);
@@ -35,7 +36,7 @@ function App() {
           {loggedId && (
             <ResponsiveComponent>
               {({ size }) => {
-                if(size !== screenSize) {
+                if (size !== screenSize) {
                   setScreenSize(size);
                 }
                 return size === "lg" ? (
@@ -65,6 +66,10 @@ function App() {
               <Route
                 path="/overview"
                 element={loggedId ? <Overview /> : <Navigate to="/login" />}
+              ></Route>
+              <Route
+                path="/transactions"
+                element={loggedId ? <Transaction /> : <Navigate to="/login" />}
               ></Route>
               <Route
                 path="/login"

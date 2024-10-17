@@ -4,7 +4,7 @@ import React from "react";
 import { Box, Flex } from "@chakra-ui/react";
 
 import { TextComponent } from "../TextComponent/TextComponent";
-import { RecurringBillsIcon } from "../../assets/icons/custonIcons";
+import { RecurringBillsIcon } from "../../assets/icons/customIcons";
 import { NumberDisplayComponent } from "../NumberDisplayComponent/NumberDisplayComponent";
 
 interface AmountBoxProps {
